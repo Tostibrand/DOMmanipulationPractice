@@ -1,33 +1,24 @@
-const list = document.querySelector(`ul`);
-const input = document.querySelector(`input`);
-const button = document.querySelector(`button`);
+let btn = document.querySelector('#btn');
 
-button.addEventListener(`click`, () => {
-    const myInput = input.value;
-    // to clear the input field after `Add item` has been pressed
-    input.value = ``
+btn.addEventListener('click', (event) => {
+    alert(event.type + `Clicked!`); // click
+});
 
-    const newListElement = document.createElement(`li`)
-    const newSpan = document.createElement(`span`)
-    const newButton = document.createElement(`button`)
+addEventListener('DOMContentLoaded', (event) => {
+    console.log('The DOM is fully loaded.');
+});
 
-    newListElement.appendChild(newSpan);
-    newListElement.appendChild(newButton);
+addEventListener('load', (event) => {
+    console.log('The page is fully loaded.');
+});
 
-    newSpan.textContent = myInput
-    // to name the button
-    newButton.textContent = `delete`
-    
-    //to delete the list entry 
-    newButton.addEventListener(`click`, () => {
-        list.removeChild(newListElement)
-        })
+addEventListener('beforeunload', (event) => {
+    // show the confirmation dialog
+    event.preventDefault();
+    // Google Chrome requires returnValue to be set.
+    event.returnValue = '';
+});
 
-    // to add new list element to the list
-    list.appendChild(newListElement)
-
-    input.focus({focusVisible: true})
-
-
-    
-})
+addEventListener('unload', (event) => {
+    // send analytic data
+});
